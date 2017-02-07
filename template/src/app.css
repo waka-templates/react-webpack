@@ -1,0 +1,6 @@
+$color: red;
+
+#app{
+    display: flex;
+    color: $color;
+}

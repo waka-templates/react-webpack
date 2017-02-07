@@ -8,7 +8,6 @@
 let path = require('path');
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let vendor = ['react','react-dom'];
 let projectRoot = path.resolve(__dirname, '../');
@@ -23,10 +22,6 @@ module.exports = {
                     path.join(projectRoot, 'src')
                 ],
                 loaders: ['react-hot','babel']
-            },
-            {
-                test:/\.css$/,
-                loader:ExtractTextPlugin.extract('style','css')
             },
             {
                 test: /\.(png|jpg|gif|jpeg)$/,
@@ -60,7 +55,6 @@ module.exports = {
         ];
     },
     plugins:[
-        new ExtractTextPlugin("styles.css"),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name:"vendor",

@@ -10,6 +10,11 @@ let webpack = require('webpack');
 let devConfig = require('./webpack.base.config');
 let config = require('../config');
 
+devConfig.module.loaders.push({
+    test:/\.css$/,
+    loader: 'style!css!postcss'
+});
+
 devConfig.plugins = (devConfig.plugins || []).concat([
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({

@@ -6,11 +6,18 @@
 
 let path = require('path');
 let webpack = require('webpack');
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let prodConfig = require('./webpack.base.config');
 let config = require('../config');
 
+prodConfig.module.loaders.push({
+    test:/\.css$/,
+    loader:ExtractTextPlugin.extract('style','css!postcss')
+});
+
 prodConfig.plugins = (prodConfig.plugins || []).concat([
+    new ExtractTextPlugin("styles.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
         'process.env': config.build.env
