@@ -1,3 +1,8 @@
+
+/**
+    Use Sass-like markup in your CSS: https://www.npmjs.com/package/precss
+ */
+
 $color: red;
 
 #app{
