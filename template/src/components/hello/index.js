@@ -25,7 +25,7 @@ export  default  class Hello extends Component{
         return (
             <div className="desc">
                 <p>{this.props.desc}</p>
-                <img src="../../assets/logo.png" alt="logo"/>
+                <img src={require('../../assets/logo.png')} alt="logo"/>
             </div>
         )
     }
