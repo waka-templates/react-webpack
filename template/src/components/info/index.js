@@ -4,20 +4,12 @@
 
 'use strict';
 
-import React, {Component,PropTypes} from 'react';
+import React, {Component} from 'react';
 
 export  default  class Info extends Component{
     constructor (){
         super();
     }
-
-    static propTypes = {
-        desc: PropTypes.string
-    };
-
-    static defaultProps = {
-        desc: 'A simple template webpack + react setup for projects'
-    };
 
     render(){
         return (
