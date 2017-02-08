@@ -5,7 +5,7 @@
   "author": "dwqs",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./build/dev-server.js",
-    "build": "cross-env NODE_ENV=production node ./build/webpack.prod.config.js"{{#test}},
+    "build": "./node_modules/.bin/webpack --config ./build/webpack.prod.config.js --progress"{{#test}},
     "test": "jest"{{/test}}
   },
   "dependencies": {
