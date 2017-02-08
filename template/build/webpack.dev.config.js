@@ -9,8 +9,16 @@ let webpack = require('webpack');
 
 let devConfig = require('./webpack.base.config');
 let config = require('../config');
+let projectRoot = path.resolve(__dirname, '../');
 
-devConfig.module.loaders.push({
+devConfig.module.loaders.unshift({
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    include: [
+        path.join(projectRoot, 'src')
+    ],
+    loader: 'react-hot!babel'
+},{
     test:/\.css$/,
     loader: 'style!css!postcss'
 });

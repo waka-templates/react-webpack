@@ -10,19 +10,11 @@ let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let vendor = ['react','react-dom'];
-let projectRoot = path.resolve(__dirname, '../');
+
 
 module.exports = {
     module: {
         loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                include: [
-                    path.join(projectRoot, 'src')
-                ],
-                loaders: ['react-hot','babel']
-            },
             {
                 test: /\.(png|jpg|gif|jpeg)$/,
                 loader: 'url',

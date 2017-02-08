@@ -10,10 +10,18 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let prodConfig = require('./webpack.base.config');
 let config = require('../config');
+let projectRoot = path.resolve(__dirname, '../');
 
-prodConfig.module.loaders.push({
+prodConfig.module.loaders.unshift({
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    include: [
+        path.join(projectRoot, 'src')
+    ],
+    loader: 'babel'
+},{
     test:/\.css$/,
-    loader:ExtractTextPlugin.extract('style','css!postcss')
+    loader:ExtractTextPlugin.extract('style','css!postcss?sourceMap')
 });
 
 prodConfig.plugins = (prodConfig.plugins || []).concat([

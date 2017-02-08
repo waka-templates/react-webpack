@@ -8,6 +8,8 @@ import './app.css';
 
 import React, {Component} from 'react';
 
+import Hello from '@components/hello';
+
 export default class App extends Component{
     constructor (){
         super();
@@ -15,7 +17,10 @@ export default class App extends Component{
 
     render(){
         return (
-            <div>react webpack</div>
+            <div>
+                <h3>react webpack</h3>
+                <Hello />
+            </div>
         )
     }
 }
