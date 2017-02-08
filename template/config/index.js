@@ -11,13 +11,11 @@ module.exports =  {
         env: require('./dev.env.js'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsPublicPath: '/',
-        assetsSubDirectory: 'static',
         port: 3000
     },
     build:{
         env: require('./prod.env.js'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsPublicPath: '/',
-        assetsSubDirectory: 'static'
     }
 }
