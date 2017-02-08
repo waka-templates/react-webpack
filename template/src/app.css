@@ -5,6 +5,10 @@
 
 $color: red;
 
+#app{
+    display: flex;
+}
+
 h3{
     color: $color;
 }
