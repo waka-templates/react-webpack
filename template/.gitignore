@@ -42,3 +42,4 @@ jspm_packages
 public/dist
 dist
 .DS_Store
+!src/assets
