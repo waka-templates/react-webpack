@@ -23,10 +23,10 @@ export  default  class Info extends Component{
         return (
             <div className="info">
                 <h2>{this.props.info}</h2>
-                <h3>Project Name:222</h3>
-                <h3>Project Version:3333</h3>
-                <h3>Author:44444</h3>
-                <h3>Desc: 55555</h3>
+                <h3>Project Name:{{name}}</h3>
+                <h3>Project Version:{{version}}</h3>
+                <h3>Author:{{author}}</h3>
+                <h3>Desc: {{description}}</h3>
             </div>
         )
     }

@@ -5,13 +5,13 @@
   "author": "dwqs",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./build/dev-server.js",
-    "build": "cross-env NODE_ENV=production node ./build/webpack.prod.config.js",
-    "test": "jest"
+    "build": "cross-env NODE_ENV=production node ./build/webpack.prod.config.js"{{#test}},
+    "test": "jest"{{/test}}
   },
   "dependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-router": "^3.0.2"
+    "react-dom": "^15.3.2"{{#router}},
+    "react-router": "^3.0.2"{{/router}}
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -33,11 +33,11 @@
     "html-webpack-plugin": "^2.26.0",
     "cross-env": "^3.1.4",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^1.16.2"{{#test}},
     "react-addons-test-utils": "^15.3.2",
     "babel-jest": "^17.0.2",
     "enzyme": "^2.7.1",
-    "jest": "^18.1.0"
+    "jest": "^18.1.0"{{/test}}
   },
   "engines": {
     "node": ">= 5.0.0",

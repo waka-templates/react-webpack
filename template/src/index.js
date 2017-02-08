@@ -6,19 +6,13 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+{{#router}}
 import { Router, Route, browserHistory} from 'react-router';
-
-import App from './app';
 import Info from './components/info';
+{{/router}}
+import App from './app';
 
-// window.onload = function () {
-//     ReactDOM.render(
-//         <App />,
-//         document.getElementById('app')
-//     );
-// };
-
+{{#if router}}
 window.onload = function () {
     ReactDOM.render(
         <Router history={browserHistory}>
@@ -28,3 +22,12 @@ window.onload = function () {
         document.getElementById('app')
     )
 };
+{{else}}
+window.onload = function () {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('app')
+    );
+};
+{{/if}}
+
