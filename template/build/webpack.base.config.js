@@ -10,7 +10,7 @@ let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let vendor = ['react','react-dom'];
-
+let ReplaceAssets = require('./replaceAssets');
 
 module.exports = {
     module: {
@@ -25,7 +25,7 @@ module.exports = {
             },
             {
                 test: /\.(swf|eot|svg|ttf|woff|svg)$/,
-                loader: "file-loader"
+                loader: "file"
             }
         ]
     },
@@ -47,6 +47,7 @@ module.exports = {
         ];
     },
     plugins:[
+        new ReplaceAssets(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name:"vendor",

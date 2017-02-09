@@ -31,27 +31,10 @@ devConfig.plugins = (devConfig.plugins || []).concat([
     new webpack.NoErrorsPlugin()
 ]);
 
-// see https://webpack.github.io/docs/webpack-dev-server.html
-devConfig.devServer = {
-    hot: true,
-    noInfo: false,
-    quite: false,
-    port: config.dev.port,
-    debug:true,
-    inline: true,
-    progress: true,
-    historyApiFallback: true,
-    colors: true,
-    stats: 'normal',
-    contentBase: config.dev.assetsPublicPath,
-    publicPath: config.dev.assetsPublicPath
-};
-
 module.exports = Object.assign({},devConfig,{
     entry: {
         app:[
-            "webpack/hot/dev-server",
-            `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
+            "webpack-hot-middleware/client?noInfo=true&reload=true",
             path.resolve(__dirname, '../src/index.js')
         ]
     },
