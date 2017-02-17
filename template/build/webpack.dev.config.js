@@ -31,10 +31,27 @@ devConfig.plugins = (devConfig.plugins || []).concat([
     new webpack.NoErrorsPlugin()
 ]);
 
+// see https://webpack.github.io/docs/webpack-dev-server.html
+devConfig.devServer = {
+    hot: true,
+    noInfo: false,
+    quite: false,
+    port: config.dev.port,
+    debug:true,
+    inline: true,
+    progress: true,
+    historyApiFallback: true,
+    colors: true,
+    stats: 'normal',
+    contentBase: './public',
+    publicPath: config.dev.assetsPublicPath
+};
+
 module.exports = Object.assign({},devConfig,{
     entry: {
         app:[
-            "webpack-hot-middleware/client?noInfo=true&reload=true",
+            "webpack/hot/dev-server",
+            `webpack-dev-server/client?http://localhost:${config.dev.port}/`,
             path.resolve(__dirname, '../src/index.js')
         ]
     },
@@ -44,5 +61,6 @@ module.exports = Object.assign({},devConfig,{
         publicPath: config.dev.assetsPublicPath,
         sourceMapFilename: '[file].map'
     },
-    devtool:'#cheap-module-eval-source-map'
+    devtool:'#cheap-module-eval-source-map',
+    debug: true
 });

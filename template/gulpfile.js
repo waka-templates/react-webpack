@@ -12,6 +12,7 @@ let opn = require('opn');
 let rev = require('gulp-rev');
 let webpack = require('webpack');
 let express = require('express');
+let WebpackDevServer = require('webpack-dev-server');
 
 let webpackDevConfig = require('./build/webpack.dev.config.js');
 let config = require('./config/index');
@@ -38,40 +39,25 @@ gulp.task('clean', () =>
 );
 
 gulp.task('dev', ['assets'], () => {
-    let app = express();
     let compiler = webpack(webpackDevConfig);
+    let server = new WebpackDevServer(compiler, webpackDevConfig.devServer);
 
-    let devMiddleware = require('webpack-dev-middleware')(compiler, {
-        publicPath: webpackDevConfig.output.publicPath,
-        quiet: true,
-        noInfo: false
-    });
-
-    let hotMiddleware = require('webpack-hot-middleware')(compiler);
-
-    app.use(devMiddleware);
-    app.use(hotMiddleware);
-
-    // serve pure static assets
-    app.use(express.static('public'));
-
-    app.listen(config.dev.port, (err) => {
-        if (err) {
-            console.error(err);
-            return;
+    server.listen(config.dev.port, 'localhost', function(err) {
+        if(err) {
+            throw new gutil.PluginError('[webpack-dev-server err]', err)
         }
     });
 
     //编译完成
     compiler.plugin('done', (stats) => {
 
-        gutil.log('[webpack]',stats.toString({
-            colors: true,
-            modules: false,
-            children: false,
-            chunks: false,
-            chunkModules: false
-        }) + '\n\n');
+        // gutil.log('[webpack]',stats.toString({
+        //     colors: true,
+        //     modules: false,
+        //     children: false,
+        //     chunks: false,
+        //     chunkModules: false
+        // }) + '\n\n');
 
         if(!browserIsOpen && env === 'development'){
             browserIsOpen = true;
